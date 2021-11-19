@@ -36,7 +36,7 @@ class App extends Component{
     if(!this.state.firstName){
       alert ("Input is not valid")
     }else{
-      alert("Purchase complete")
+      alert(`Purchase complete. Your total: $${this.state.total.toFixed(2)}`)
     }
   }
 
