@@ -33,11 +33,24 @@ class App extends Component{
   //   })
   // }
   
-  handleSubmit=()=>{
-    // e.prevent.Default();
-    alert("Purchase complete")
-    console.log("Trigger");
+  // handleSubmit=()=>{
+  //   let { firstName, lastName, email, zipCode, creditCard} = this.state;
+  //   if(!firstName || !lastName || !email || !creditCard || zipCode){
+  //     alert ("Input is not valid")
+  //   }else{
+  //     alert("Purchase complete")
+  //   }
+  // }
+
+  handleSubmit=(e)=>{
+    // let { firstName, lastName, email, zipCode, creditCard} = this.state;
+    if(!this.state.firstName){
+      alert ("Input is not valid")
+    }else{
+      alert("Purchase complete")
+    }
   }
+
   handleFirstName =(e)=>{
     this.setState({
       firstName: e.target.value
@@ -95,7 +108,7 @@ class App extends Component{
     return(
       <div className="app" id="app-container">
         <h1>My Garage Sale</h1>
-        <div class="shoppingcart-list-container">
+        <div className="shoppingcart-list-container">
           
             {shoppingList}
           
@@ -123,7 +136,7 @@ class App extends Component{
             <br></br>
             <label htmlFor="last-name">Last Name</label>
             <input
-              onInput={this.handleLasttName}
+              onInput={this.handleLastName}
               value={this.state.lastName}
               type="text"
               name="last-name"
