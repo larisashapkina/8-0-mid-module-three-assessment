@@ -11,6 +11,7 @@ class App extends Component{
 
       subtotal: 0,
       tax:0,
+      total :0, 
 
       firstName: "",
       lastName: "",
@@ -24,7 +25,8 @@ class App extends Component{
     this.setState({
       shoppingArr: [...this.state.shoppingArr, item],
       subtotal: this.state.subtotal + item.price,
-      tax: this.state.tax + (item.price * 0.5)
+      tax: this.state.tax + (item.price * 0.5),
+      total: this.state.subtotal + this.state.tax
     })
   }
 
@@ -108,7 +110,7 @@ class App extends Component{
                 
             <div><strong>Subtotal:$ {this.state.subtotal.toFixed(2)}</strong></div>
             <div><strong>Tax:$ {this.state.tax.toFixed(2)}</strong></div>
-            <div><strong>Total:</strong></div>
+            <div><strong>Total: ${this.state.total.toFixed(2)}</strong></div>
       
             <h2>Checkout</h2>
           
