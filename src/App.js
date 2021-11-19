@@ -8,6 +8,7 @@ class App extends Component{
     this.state={
       shoppingList: data,
       shoppingArr:[],
+
       subtotal: 0,
 
       firstName: "",
@@ -21,29 +22,19 @@ class App extends Component{
   handleitemClick=(item)=>{
     this.setState({
       shoppingArr: [...this.state.shoppingArr, item],
-      
+      subtotal: this.state.subtotal + item.price
     })
   }
 
   // handleSubtotal=(item)=>{
-  //   let subtotal = 0;
-    
   //   this.setState({
-  //     subtotal: subtotal+ item.price
+  //     shoppingArr: [...this.state.shoppingArr, item.price],
+  //     subtotal: 100
   //   })
   // }
   
-  // handleSubmit=()=>{
-  //   let { firstName, lastName, email, zipCode, creditCard} = this.state;
-  //   if(!firstName || !lastName || !email || !creditCard || zipCode){
-  //     alert ("Input is not valid")
-  //   }else{
-  //     alert("Purchase complete")
-  //   }
-  // }
 
   handleSubmit=(e)=>{
-    // let { firstName, lastName, email, zipCode, creditCard} = this.state;
     if(!this.state.firstName){
       alert ("Input is not valid")
     }else{
@@ -84,7 +75,7 @@ class App extends Component{
   render(){
     let shoppingList= this.state.shoppingList.map((item)=>{
       return (
-        <div className="shoppingcart-item-container"
+        <div className="shoppingcart-item-container" 
             onClick= {()=>this.handleitemClick(item)}
         >
             <div><strong>{item.name}</strong></div>
@@ -101,14 +92,15 @@ class App extends Component{
       return(
         <div>
           <li>{item.name}: ${item.price}</li>
-          
         </div>
       )
     })
+
     return(
+      <body>
       <div className="app" id="app-container">
         <h1>My Garage Sale</h1>
-        <div className="shoppingcart-list-container">
+        <div className="shoppingcart-list-container" >
           
             {shoppingList}
           
@@ -118,7 +110,7 @@ class App extends Component{
                 {shoppingItemArr}
             </ul>
                 
-            <div><strong>Subtotal: {this.handleSubtotal}</strong></div>
+            <div><strong>Subtotal:{this.state.subtotal.toFixed(2)}</strong></div>
             <div><strong>Tax:</strong></div>
             <div><strong>Total:</strong></div>
       
@@ -175,6 +167,7 @@ class App extends Component{
         </div>
       </div>   
      </div>  
+     </body>
     )
   }
 }
