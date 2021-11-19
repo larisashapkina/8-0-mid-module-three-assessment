@@ -33,11 +33,41 @@ class App extends Component{
   //   })
   // }
   
+  handleSubmit=()=>{
+    // e.prevent.Default();
+    alert("Purchase complete")
+    console.log("Trigger");
+  }
   handleFirstName =(e)=>{
     this.setState({
-
+      firstName: e.target.value
     })
   }
+
+  handleLastName =(e)=>{
+    this.setState({
+      lastName: e.target.value
+    })
+  }
+
+  handleCreditCard =(e)=>{
+    this.setState({
+      creditCard: e.target.value
+    })
+  }
+
+  handleEmail =(e)=>{
+    this.setState({
+      email: e.target.value
+    })
+  }
+
+  handleZipcode =(e)=>{
+    this.setState({
+      zipCode: e.target.value
+    })
+  }
+
   render(){
     let shoppingList= this.state.shoppingList.map((item)=>{
       return (
@@ -54,7 +84,6 @@ class App extends Component{
       )
     })
 
-      
     let shoppingItemArr = this.state.shoppingArr.map((item)=>{
       return(
         <div>
@@ -82,10 +111,11 @@ class App extends Component{
       
             <h2>Checkout</h2>
           
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <label htmlFor="first-name">First Name</label>
             <input
-              // value={}
+              onInput={this.handleFirstName}
+              value={this.state.firstName}
               type="text"
               name="first-name"
               id="first-name"
@@ -93,6 +123,8 @@ class App extends Component{
             <br></br>
             <label htmlFor="last-name">Last Name</label>
             <input
+              onInput={this.handleLasttName}
+              value={this.state.lastName}
               type="text"
               name="last-name"
               id="last-name"
@@ -100,6 +132,8 @@ class App extends Component{
             <br></br>
             <label htmlFor="first-name">Email</label>
             <input
+              onInput={this.handleEmail}
+              value={this.state.email}
               type="text"
               name="email"
               id="email"
@@ -107,6 +141,8 @@ class App extends Component{
             <br></br>
             <label htmlFor="credit-card">Credit Card</label>
             <input
+              onInput={this.handleCreditCard}
+              value={this.state.creditCard}
               type="text"
               name="credit-card"
               id="credit-card"
@@ -114,6 +150,8 @@ class App extends Component{
             <br></br>
             <label htmlFor="zipcode">Zip Code</label>
             <input
+              onInput={this.handleZipcode}
+              value={this.state.zipCode}
               type="text"
               name="zipcode"
               id="zipcode"
