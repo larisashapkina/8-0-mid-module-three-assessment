@@ -32,7 +32,7 @@ class App extends Component{
 
   
 
-  handleSubmit=(e)=>{
+  handleSubmit=()=>{
     if(!this.state.firstName){
       alert ("Input is not valid")
     }else{
@@ -73,7 +73,7 @@ class App extends Component{
   render(){
     let shoppingList= this.state.shoppingList.map((item)=>{
       return (
-        <div className="shoppingcart-item-container" 
+        <div className="item-container" 
             onClick= {()=>this.handleitemClick(item)}
         >
             <div><strong>{item.name}</strong></div>
@@ -95,19 +95,16 @@ class App extends Component{
     })
 
     return(
-      <body>
       <div className="app" id="app-container">
         <h1>My Garage Sale</h1>
-        <div className="shoppingcart-list-container" >
-          
+        <div className="shoppingcart-list-container" id="items">
             {shoppingList}
-          
-          <div class="form">
+        <div className="forms" id="form">
             <h2>Cart</h2>
             <ul>
                 {shoppingItemArr}
             </ul>
-                
+ 
             <div><strong>Subtotal:$ {this.state.subtotal.toFixed(2)}</strong></div>
             <div><strong>Tax:$ {this.state.tax.toFixed(2)}</strong></div>
             <div><strong>Total: ${this.state.total.toFixed(2)}</strong></div>
@@ -165,7 +162,6 @@ class App extends Component{
         </div>
       </div>   
      </div>  
-     </body>
     )
   }
 }
