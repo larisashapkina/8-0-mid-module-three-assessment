@@ -10,6 +10,7 @@ class App extends Component{
       shoppingArr:[],
 
       subtotal: 0,
+      tax:0,
 
       firstName: "",
       lastName: "",
@@ -22,16 +23,11 @@ class App extends Component{
   handleitemClick=(item)=>{
     this.setState({
       shoppingArr: [...this.state.shoppingArr, item],
-      subtotal: this.state.subtotal + item.price
+      subtotal: this.state.subtotal + item.price,
+      tax: this.state.tax + (item.price * 0.5)
     })
   }
 
-  // handleSubtotal=(item)=>{
-  //   this.setState({
-  //     shoppingArr: [...this.state.shoppingArr, item.price],
-  //     subtotal: 100
-  //   })
-  // }
   
 
   handleSubmit=(e)=>{
@@ -110,8 +106,8 @@ class App extends Component{
                 {shoppingItemArr}
             </ul>
                 
-            <div><strong>Subtotal:{this.state.subtotal.toFixed(2)}</strong></div>
-            <div><strong>Tax:</strong></div>
+            <div><strong>Subtotal:$ {this.state.subtotal.toFixed(2)}</strong></div>
+            <div><strong>Tax:$ {this.state.tax.toFixed(2)}</strong></div>
             <div><strong>Total:</strong></div>
       
             <h2>Checkout</h2>
